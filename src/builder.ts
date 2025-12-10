@@ -39,10 +39,17 @@ export class Builder {
     };
   }
 
-  async fetch(baseURL: string, email: string, password: string) {
+  async fetch(baseURL: string, emailOrToken: string, password?: string) {
     const directus = axios.create({ baseURL });
 
-    const { access_token } = await directus.post("/auth/login", { email, password }).then(({ data: { data } }) => data);
+    let access_token = emailOrToken;
+
+    if (password !== undefined) {
+      const {
+        data: { data }
+      } = await directus.post("/auth/login", { email: emailOrToken, password });
+      access_token = data.access_token;
+    }
 
     directus.defaults.headers.common = {
       Authorization: `Bearer ${access_token}`

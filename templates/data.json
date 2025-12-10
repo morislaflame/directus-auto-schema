@@ -1,0 +1,80 @@
+{
+  "data": {
+    "categories": [
+      { "id": 1, "name": "Кирпич", "description": "Облицовочный и строительный кирпич", "order": 1 },
+      { "id": 2, "name": "Блоки", "description": "Газоблок и керамический блок", "order": 2 },
+      { "id": 3, "name": "Плитка", "description": "Тротуарная плитка и брусчатка", "order": 3 }
+    ],
+    "subcategories": [
+      { "id": 101, "name": "Облицовочный кирпич", "description": "", "category": 1 },
+      { "id": 102, "name": "Силикатный кирпич", "description": "", "category": 1 },
+      { "id": 201, "name": "Газоблок (газобетон)", "description": "", "category": 2 },
+      { "id": 202, "name": "Блок керамический", "description": "", "category": 2 },
+      { "id": 301, "name": "Брусчатка", "description": "", "category": 3 },
+      { "id": 302, "name": "Дорожные элементы", "description": "", "category": 3 }
+    ],
+    "product": [
+      {
+        "id": "prod-1",
+        "status": "published",
+        "name": "ТЕРМОБЛОК 38 (9,3 НФ)",
+        "price": 66.15,
+        "url": null,
+        "image": null,
+        "category": 2,
+        "subcategory": 202
+      },
+      {
+        "id": "prod-2",
+        "status": "published",
+        "name": "Газоблок D500 600×200×300",
+        "price": 145.0,
+        "url": null,
+        "image": null,
+        "category": 2,
+        "subcategory": 201
+      },
+      {
+        "id": "prod-3",
+        "status": "published",
+        "name": "Кирпич облицовочный красный",
+        "price": 28.5,
+        "url": null,
+        "image": null,
+        "category": 1,
+        "subcategory": 101
+      },
+      {
+        "id": "prod-4",
+        "status": "published",
+        "name": "Силикатный кирпич М150",
+        "price": 22.0,
+        "url": null,
+        "image": null,
+        "category": 1,
+        "subcategory": 102
+      },
+      {
+        "id": "prod-5",
+        "status": "published",
+        "name": "Брусчатка 200×100×60",
+        "price": 520.0,
+        "url": null,
+        "image": null,
+        "category": 3,
+        "subcategory": 301
+      }
+    ],
+    "product_properties": [
+      { "id": 1, "product": "prod-1", "name": "Производитель", "value": "BIS", "type": "string" },
+      { "id": 2, "product": "prod-1", "name": "Формат", "value": "9,3 НФ", "type": "string" },
+      { "id": 3, "product": "prod-2", "name": "Производитель", "value": "AEROC", "type": "string" },
+      { "id": 4, "product": "prod-2", "name": "Плотность", "value": "500", "type": "number" },
+      { "id": 5, "product": "prod-3", "name": "Производитель", "value": "RAUF", "type": "string" },
+      { "id": 6, "product": "prod-4", "name": "Производитель", "value": "ЛСР", "type": "string" },
+      { "id": 7, "product": "prod-5", "name": "Цвет", "value": "Серый", "type": "string" },
+      { "id": 8, "product": "prod-5", "name": "Производитель", "value": "Брус", "type": "string" }
+    ]
+  }
+}
+

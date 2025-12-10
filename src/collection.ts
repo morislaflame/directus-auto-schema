@@ -374,6 +374,7 @@ export class Collection {
     const { template } = options;
 
     const field = this.field(name, primary_key.type)
+      .special("m2o")
       .interface("select-dropdown-m2o", { template })
       .display("related-values", { template });
 
