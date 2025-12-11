@@ -68,7 +68,10 @@ function buildSnapshotModel() {
 
     const productProperties = builder.collection("product_properties").accountability("all");
     productProperties.primary_key("id", "integer").hidden().readonly().width("full");
-    productProperties.foreign("product", "product", "properties", { on_delete: "NO ACTION" }).width("full");
+    productProperties
+      .foreign("product", "product", "properties", { on_delete: "SET NULL", one_deselect_action: "nullify" })
+      .hidden(true)
+      .width("full");
     productProperties.string("name").interface("input").required().width("full");
     productProperties.string("value").interface("input").width("full");
     productProperties

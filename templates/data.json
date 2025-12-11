@@ -15,7 +15,7 @@
     ],
     "product": [
       {
-        "id": "prod-1",
+        "legacy_id": "prod-1",
         "status": "published",
         "name": "ТЕРМОБЛОК 38 (9,3 НФ)",
         "price": 66.15,
@@ -25,7 +25,7 @@
         "subcategory": 202
       },
       {
-        "id": "prod-2",
+        "legacy_id": "prod-2",
         "status": "published",
         "name": "Газоблок D500 600×200×300",
         "price": 145.0,
@@ -35,7 +35,7 @@
         "subcategory": 201
       },
       {
-        "id": "prod-3",
+        "legacy_id": "prod-3",
         "status": "published",
         "name": "Кирпич облицовочный красный",
         "price": 28.5,
@@ -45,7 +45,7 @@
         "subcategory": 101
       },
       {
-        "id": "prod-4",
+        "legacy_id": "prod-4",
         "status": "published",
         "name": "Силикатный кирпич М150",
         "price": 22.0,
@@ -55,7 +55,7 @@
         "subcategory": 102
       },
       {
-        "id": "prod-5",
+        "legacy_id": "prod-5",
         "status": "published",
         "name": "Брусчатка 200×100×60",
         "price": 520.0,

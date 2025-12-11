@@ -73,12 +73,32 @@ async function main() {
   const subcategoriesToInsert = (data.subcategories || []).filter(({ id }) => !existingSubcategories.has(String(id)));
   await seedCollection(directus, "subcategories", subcategoriesToInsert);
 
-  const existingProducts = await getExistingIds(directus, "product");
-  const productsToInsert = (data.product || []).filter(({ id }) => !existingProducts.has(String(id)));
-  await seedCollection(directus, "product", productsToInsert);
+  // Продукты: убираем legacy_id перед вставкой, запоминаем соответствие legacy_id -> новый uuid
+  const productsRaw = data.product || [];
+  const payloads = productsRaw.map((p) => {
+    const { legacy_id, ...rest } = p;
+    return { legacy_id: legacy_id || null, payload: rest };
+  });
+
+  let productIdMap = new Map();
+  if (payloads.length) {
+    const { data: productResp } = await directus.post("/items/product", payloads.map(({ payload }) => payload));
+    const created = productResp?.data || productResp || [];
+    productIdMap = new Map(payloads.map((p, idx) => [p.legacy_id || p.payload.name || String(idx), created[idx]?.id]));
+    console.log("Seeded product:", created.length);
+  }
 
   const existingProps = await getExistingIds(directus, "product_properties");
-  const propsToInsert = (data.product_properties || []).filter(({ id }) => !existingProps.has(String(id)));
+  const propsToInsert = (data.product_properties || [])
+    .filter(({ id }) => !existingProps.has(String(id)))
+    .map((prop) => {
+      const mapped = { ...prop };
+      if (prop.product && productIdMap.has(prop.product)) {
+        mapped.product = productIdMap.get(prop.product);
+      }
+      return mapped;
+    })
+    .filter((p) => p.product);
   await seedCollection(directus, "product_properties", propsToInsert);
 
   console.log("Данные загружены.");
