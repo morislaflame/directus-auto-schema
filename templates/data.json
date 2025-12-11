@@ -1,17 +1,15 @@
 {
   "data": {
     "categories": [
-      { "id": 1, "name": "Кирпич", "description": "Облицовочный и строительный кирпич", "order": 1 },
-      { "id": 2, "name": "Блоки", "description": "Газоблок и керамический блок", "order": 2 },
-      { "id": 3, "name": "Плитка", "description": "Тротуарная плитка и брусчатка", "order": 3 }
-    ],
-    "subcategories": [
-      { "id": 101, "name": "Облицовочный кирпич", "description": "", "category": 1 },
-      { "id": 102, "name": "Силикатный кирпич", "description": "", "category": 1 },
-      { "id": 201, "name": "Газоблок (газобетон)", "description": "", "category": 2 },
-      { "id": 202, "name": "Блок керамический", "description": "", "category": 2 },
-      { "id": 301, "name": "Брусчатка", "description": "", "category": 3 },
-      { "id": 302, "name": "Дорожные элементы", "description": "", "category": 3 }
+      { "id": 1, "name": "Кирпич", "description": "Облицовочный и строительный кирпич", "order": 1, "parent": null },
+      { "id": 2, "name": "Блоки", "description": "Газоблок и керамический блок", "order": 2, "parent": null },
+      { "id": 3, "name": "Плитка", "description": "Тротуарная плитка и брусчатка", "order": 3, "parent": null },
+      { "id": 101, "name": "Облицовочный кирпич", "description": "", "parent": 1 },
+      { "id": 102, "name": "Силикатный кирпич", "description": "", "parent": 1 },
+      { "id": 201, "name": "Газоблок (газобетон)", "description": "", "parent": 2 },
+      { "id": 202, "name": "Блок керамический", "description": "", "parent": 2 },
+      { "id": 301, "name": "Брусчатка", "description": "", "parent": 3 },
+      { "id": 302, "name": "Дорожные элементы", "description": "", "parent": 3 }
     ],
     "product": [
       {
@@ -21,8 +19,7 @@
         "price": 66.15,
         "url": null,
         "image": null,
-        "category": 2,
-        "subcategory": 202
+        "category": 202
       },
       {
         "legacy_id": "prod-2",
@@ -31,8 +28,7 @@
         "price": 145.0,
         "url": null,
         "image": null,
-        "category": 2,
-        "subcategory": 201
+        "category": 201
       },
       {
         "legacy_id": "prod-3",
@@ -41,8 +37,7 @@
         "price": 28.5,
         "url": null,
         "image": null,
-        "category": 1,
-        "subcategory": 101
+        "category": 101
       },
       {
         "legacy_id": "prod-4",
@@ -51,8 +46,7 @@
         "price": 22.0,
         "url": null,
         "image": null,
-        "category": 1,
-        "subcategory": 102
+        "category": 102
       },
       {
         "legacy_id": "prod-5",
@@ -61,8 +55,7 @@
         "price": 520.0,
         "url": null,
         "image": null,
-        "category": 3,
-        "subcategory": 301
+        "category": 301
       }
     ],
     "product_properties": [

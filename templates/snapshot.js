@@ -39,14 +39,9 @@ function buildSnapshotModel() {
     categories.string("name").interface("input").required().width("full");
     categories.text("description").interface("input-multiline").width("full");
     categories.integer("order").interface("input").width("full");
-
-    const subcategories = builder.collection("subcategories").accountability("all");
-    subcategories.primary_key("id", "integer").hidden().readonly().width("full");
-    subcategories.string("name").interface("input").required().width("full");
-    subcategories.text("description").interface("input-multiline").width("full");
-    const subcategoryImage = subcategories.uuid("image").interface("file-image").special("file").width("full");
-    subcategoryImage.relation("directus_files").on_delete("SET NULL").junction_field("subcategories_id");
-    subcategories.foreign("category", "categories", null, { on_delete: "SET NULL" }).width("full");
+    categories.foreign("parent", "categories", null, { on_delete: "SET NULL" }).width("full");
+    const categoryImage = categories.uuid("image").interface("file-image").special("file").width("full");
+    categoryImage.relation("directus_files").on_delete("SET NULL");
 
     const product = builder.collection("product").archive("status", "archived", "draft").accountability("all");
     product.primary_key("id", "uuid").hidden().readonly().unique().width("full");
@@ -63,7 +58,6 @@ function buildSnapshotModel() {
     productImage.relation("directus_files").on_delete("SET NULL");
     product.string("url").interface("input").width("full");
     product.foreign("category", "categories", null, { on_delete: "SET NULL" }).width("full");
-    product.foreign("subcategory", "subcategories", null, { on_delete: "SET NULL" }).width("full");
     product.o2m("properties", { template: "{{name}}" }).width("full");
 
     const productProperties = builder.collection("product_properties").accountability("all");
@@ -84,15 +78,6 @@ function buildSnapshotModel() {
         ]
       })
       .width("full");
-
-    const subcategoriesFiles = builder
-      .collection("subcategories_files")
-      .accountability("all")
-      .hidden(true)
-      .icon("import_export");
-    subcategoriesFiles.primary_key("id", "integer").hidden().readonly().width("full");
-    subcategoriesFiles.integer("subcategories_id").hidden(true).width("full");
-    subcategoriesFiles.uuid("directus_files_id").hidden(true).width("full");
   });
 }
 

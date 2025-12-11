@@ -69,10 +69,6 @@ async function main() {
   const categoriesToInsert = (data.categories || []).filter(({ id }) => !existingCategories.has(String(id)));
   await seedCollection(directus, "categories", categoriesToInsert);
 
-  const existingSubcategories = await getExistingIds(directus, "subcategories");
-  const subcategoriesToInsert = (data.subcategories || []).filter(({ id }) => !existingSubcategories.has(String(id)));
-  await seedCollection(directus, "subcategories", subcategoriesToInsert);
-
   // Продукты: убираем legacy_id перед вставкой, запоминаем соответствие legacy_id -> новый uuid
   const productsRaw = data.product || [];
   const payloads = productsRaw.map((p) => {
